@@ -23,7 +23,7 @@ class ElectronAutoUpdate {
 				type: 'question',
 				title: 'Install update',
 				message: 'A new update is ready. When would you like to install?',
-				buttons: ['Now and relaunch', 'When I next quit nimblenote'],
+				buttons: ['Now and relaunch', 'When I next quit'],
 				defaultId: 0,
 				cancelId: 1
 			});
