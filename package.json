@@ -1,0 +1,36 @@
+{
+  "name": "electron-auto-update",
+  "version": "1.0.0",
+  "description": "user friendly electron auto updates",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidwinter/electron-auto-update.git"
+  },
+  "keywords": [
+    "electron",
+    "app",
+    "utility",
+    "utilities",
+    "auto-update",
+    "updates"
+  ],
+  "author": "David Winter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidwinter/electron-auto-update/issues"
+  },
+  "homepage": "https://github.com/davidwinter/electron-auto-update#readme",
+  "dependencies": {
+    "electron-updater": "^4.3.5"
+  },
+  "devDependencies": {
+    "ava": "^3.13.0",
+    "electron": "^10.1.5",
+    "sinon": "^9.2.0",
+    "xo": "^0.34.1"
+  }
+}
