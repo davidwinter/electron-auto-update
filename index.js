@@ -11,12 +11,14 @@ class ElectronAutoUpdate {
 		};
 
 		if (this.options.logger) {
-			this.options.electronUpdater.logger = this.options.logger;
+			this.options.electronUpdater.autoUpdater.logger = this.options.logger;
 		}
 	}
 
 	checkForUpdates() {
-		this.options.electronUpdater.on('update-downloaded', () => {
+		const autoUpdater = this.options.electronUpdater.autoUpdater;
+
+		autoUpdater.on('update-downloaded', () => {
 			const relaunchChoice = this.options.dialog.showMessageBoxSync({
 				type: 'question',
 				title: 'Install update',
@@ -27,14 +29,14 @@ class ElectronAutoUpdate {
 			});
 
 			if (relaunchChoice === 0) {
-				this.options.electronUpdater.quitAndInstall();
+				autoUpdater.quitAndInstall();
 			}
 		});
 
-		this.options.electronUpdater.checkForUpdatesAndNotify();
+		autoUpdater.checkForUpdatesAndNotify();
 
 		setInterval(() => {
-			this.options.electronUpdater.checkForUpdatesAndNotify();
+			autoUpdater.checkForUpdatesAndNotify();
 		}, this.options.checkFrequency);
 	}
 }

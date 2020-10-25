@@ -4,7 +4,11 @@ const sinon = require('sinon');
 const {ElectronAutoUpdate} = require('.');
 
 test('uses default options', t => {
-	const updater = new ElectronAutoUpdate();
+	const updater = new ElectronAutoUpdate({
+		electronUpdater: {
+			autoUpdater: {}
+		}
+	});
 
 	t.like(updater.options, {
 		checkFrequency: 1000 * 60 * 60
@@ -13,7 +17,10 @@ test('uses default options', t => {
 
 test('allows override of default options', t => {
 	const updater = new ElectronAutoUpdate({
-		checkFrequency: 5
+		checkFrequency: 5,
+		electronUpdater: {
+			autoUpdater: {}
+		}
 	});
 
 	t.like(updater.options, {
@@ -24,10 +31,13 @@ test('allows override of default options', t => {
 test('sets the logger for electron-updater', t => {
 	const logger = {};
 	const updater = new ElectronAutoUpdate({
-		logger
+		logger,
+		electronUpdater: {
+			autoUpdater: {}
+		}
 	});
 
-	t.is(updater.options.electronUpdater.logger, logger);
+	t.is(updater.options.electronUpdater.autoUpdater.logger, logger);
 });
 
 test('checks for updates at the frequency specified', t => {
@@ -38,8 +48,10 @@ test('checks for updates at the frequency specified', t => {
 	const updater = new ElectronAutoUpdate({
 		checkFrequency: 5,
 		electronUpdater: {
-			checkForUpdatesAndNotify: checkSpy,
-			on: () => {}
+			autoUpdater: {
+				checkForUpdatesAndNotify: checkSpy,
+				on: () => {}
+			}
 		}
 	});
 
@@ -58,11 +70,13 @@ test('displays dialog when download is ready', t => {
 
 	const updater = new ElectronAutoUpdate({
 		electronUpdater: {
-			checkForUpdatesAndNotify: () => {},
-			on: (eventName, fn) => {
-				fn();
-			},
-			quitAndInstall: quitSpy
+			autoUpdater: {
+				checkForUpdatesAndNotify: () => {},
+				on: (eventName, fn) => {
+					fn();
+				},
+				quitAndInstall: quitSpy
+			}
 		},
 		dialog: {
 			showMessageBoxSync: dialogFake
