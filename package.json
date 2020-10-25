@@ -6,6 +6,9 @@
   "scripts": {
     "test": "xo && ava"
   },
+  "files": [
+    "index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/davidwinter/electron-auto-update.git"
