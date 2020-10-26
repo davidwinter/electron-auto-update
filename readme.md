@@ -1,4 +1,4 @@
-# electron-auto-update [![Build Status](https://travis-ci.org/davidwinter/electron-auto-update.svg?branch=main)](https://travis-ci.org/davidwinter/electron-auto-update)
+# electron-auto-update ![Node.js CI](https://github.com/davidwinter/electron-auto-update/workflows/Node.js%20CI/badge.svg)
 
 > A user friendly way of having your Electron apps auto-update
 
