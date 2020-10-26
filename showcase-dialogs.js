@@ -18,6 +18,11 @@ app.whenReady().then(() => {
 				onQuit: app.quit,
 				downloadAvailableIn: 5000
 			})
+		},
+		logger: {
+			info: message => {
+				console.log(`electron-auto-update: ${message}`);
+			}
 		}
 	});
 
