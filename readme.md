@@ -11,10 +11,10 @@ This package builds upon the great work done by `electron-builder` and `electron
 - Checks for updates at a regular interval (defaults to each hour)
 - Automatically downloads updates as they become available
 - Displays a dialog window and prompts the user to relaunch to update
+- Reminds users that an update is ready to be installed
 
 ## Coming soon
 
-- Remind users that an update is ready to be installed
 - Works with applications installed via snapcraft
 
 ## Usage
