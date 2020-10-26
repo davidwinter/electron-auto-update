@@ -4,7 +4,8 @@
   "description": "user friendly electron auto updates",
   "main": "index.js",
   "scripts": {
-    "test": "xo && ava"
+    "test": "xo && ava",
+    "showcase": "electron showcase-dialogs.js"
   },
   "files": [
     "index.js"
