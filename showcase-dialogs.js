@@ -1,5 +1,6 @@
 const {app, BrowserWindow} = require('electron');
 const {ElectronAutoUpdate} = require('.');
+const {AutoUpdateStub} = require('./auto-update-stub');
 
 app.whenReady().then(() => {
 	const win = new BrowserWindow({
@@ -13,16 +14,15 @@ app.whenReady().then(() => {
 	const autoUpdate = new ElectronAutoUpdate({
 		checkFrequency: 3000,
 		electronUpdater: {
-			autoUpdater: {
-				quitAndInstall: () => {
-					app.quit();
-				}
-			}
+			autoUpdater: new AutoUpdateStub({
+				onQuit: app.quit,
+				downloadAvailableIn: 5000
+			})
 		}
 	});
 
 	setTimeout(() => {
-		autoUpdate.updateDownloaded();
+		autoUpdate.checkForUpdates();
 	}, 3000);
 
 	return win;

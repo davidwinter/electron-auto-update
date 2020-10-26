@@ -30,11 +30,13 @@ class ElectronAutoUpdate {
 	async checkForUpdates() {
 		this.autoUpdater.on('update-downloaded', async () => this.updateDownloaded());
 
-		this.autoUpdater.checkForUpdatesAndNotify();
+		this.autoUpdater.on('update-not-available', () => {
+			setTimeout(() => {
+				this.autoUpdater.checkForUpdatesAndNotify();
+			}, this.checkFrequency);
+		});
 
-		setInterval(() => {
-			this.autoUpdater.checkForUpdatesAndNotify();
-		}, this.checkFrequency);
+		this.autoUpdater.checkForUpdatesAndNotify();
 	}
 
 	async updateDownloaded() {
@@ -42,12 +44,11 @@ class ElectronAutoUpdate {
 
 		if (response === 0) {
 			this.autoUpdater.quitAndInstall();
-			return;
 		}
 
 		if (checkboxChecked) {
-			setTimeout(async () => {
-				this.updateDownloaded();
+			setTimeout(() => {
+				this.autoUpdater.checkForUpdatesAndNotify();
 			}, this.checkFrequency);
 		}
 	}
