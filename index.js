@@ -15,29 +15,54 @@ class ElectronAutoUpdate {
 		}
 	}
 
-	checkForUpdates() {
-		const autoUpdater = this.options.electronUpdater.autoUpdater;
+	get autoUpdater() {
+		return this.options.electronUpdater.autoUpdater;
+	}
 
-		autoUpdater.on('update-downloaded', () => {
-			const relaunchChoice = this.options.dialog.showMessageBoxSync({
-				type: 'question',
-				title: 'Install update',
-				message: 'A new update is ready. When would you like to install?',
-				buttons: ['Now and relaunch', 'When I next quit'],
-				defaultId: 0,
-				cancelId: 1
-			});
+	get checkFrequency() {
+		return this.options.checkFrequency;
+	}
 
-			if (relaunchChoice === 0) {
-				autoUpdater.quitAndInstall();
-			}
-		});
+	get dialog() {
+		return this.options.dialog;
+	}
 
-		autoUpdater.checkForUpdatesAndNotify();
+	async checkForUpdates() {
+		this.autoUpdater.on('update-downloaded', async () => this.updateDownloaded());
+
+		this.autoUpdater.checkForUpdatesAndNotify();
 
 		setInterval(() => {
-			autoUpdater.checkForUpdatesAndNotify();
-		}, this.options.checkFrequency);
+			this.autoUpdater.checkForUpdatesAndNotify();
+		}, this.checkFrequency);
+	}
+
+	async updateDownloaded() {
+		const {response, checkboxChecked} = await this.showDownloadReadyDialog();
+
+		if (response === 0) {
+			this.autoUpdater.quitAndInstall();
+			return;
+		}
+
+		if (checkboxChecked) {
+			setTimeout(async () => {
+				this.updateDownloaded();
+			}, this.checkFrequency);
+		}
+	}
+
+	showDownloadReadyDialog() {
+		return this.dialog.showMessageBox({
+			type: 'question',
+			title: 'Update ready to be installed',
+			message: 'A new update is ready. When would you like to install?',
+			buttons: ['Now', 'Later'],
+			defaultId: 0,
+			cancelId: 1,
+			checkboxLabel: 'Remind me again if I choose later',
+			checkboxChecked: true
+		});
 	}
 }
 
