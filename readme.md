@@ -2,6 +2,8 @@
 
 > A user friendly way of having your Electron apps auto-update
 
+![electron-auto-update screenshot](https://github.com/davidwinter/electron-auto-update/raw/main/screenshot.png)
+
 This package builds upon the great work done by `electron-builder` and `electron-updater`, both of which make it really easy for you to package and publish your Electron apps. The latter package works wonders for handling the internals of auto-updating your application.
 
 `electron-auto-update` aims to make the process of auto-updating a little more user-friendly, by presenting a dialog box when an update has been downloaded and is ready to be installed, which happens upon relaunch of the application. It will also check for updates on a regular frequency.
