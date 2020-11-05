@@ -52,4 +52,5 @@ The frequency in milliseconds to check for updates. Defaults to 1 hour.
 ```
 npm install
 npm test
+np
 ```

@@ -24,6 +24,7 @@
   ],
   "author": "David Winter",
   "license": "MIT",
+  "funding": "https://github.com/davidwinter/electron-auto-update?sponsor=1",
   "bugs": {
     "url": "https://github.com/davidwinter/electron-auto-update/issues"
   },
