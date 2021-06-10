@@ -30,6 +30,18 @@ const {autoUpdate} = require('electron-auto-update');
 autoUpdate();
 ```
 
+If you would like to manually trigger an update check, for example, via a menu bar in a scenario where the user has chosen not to receive future notifications, then you can use the `triggerUpdateCheck()` method like so:
+
+```js
+const {autoUpdate} = require('electron-auto-update');
+
+// Assign the updater to a variable that you can call manually
+const updater = autoUpdate();
+
+// Call at some point later:
+updater.triggerUpdateCheck();
+```
+
 ## API
 
 ### autoUpdate(options?)
