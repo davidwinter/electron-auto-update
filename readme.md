@@ -1,4 +1,6 @@
-# electron-auto-update ![Node.js CI](https://github.com/davidwinter/electron-auto-update/workflows/Node.js%20CI/badge.svg)
+# electron-auto-update
+
+[![test](https://github.com/davidwinter/electron-auto-update/workflows/Node.js%20CI/badge.svg)](https://github.com/davidwinter/electron-auto-update/actions?query=workflow%3ANode.js%20CI) [![npm](https://img.shields.io/npm/v/electron-auto-update)](https://www.npmjs.com/package/electron-auto-update) [![npm](https://img.shields.io/npm/dw/electron-auto-update)](https://www.npmjs.com/package/electron-auto-update)
 
 > A user friendly way of having your Electron apps auto-update
 
