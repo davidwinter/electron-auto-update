@@ -63,7 +63,7 @@ test('checks for updates at the frequency specified', t => {
 		checkFrequency: 5,
 		electronUpdater: {
 			autoUpdater: {
-				checkForUpdatesAndNotify: checkSpy,
+				checkForUpdates: checkSpy,
 				on: (eventName, fn) => {
 					if (eventName === 'update-not-available') {
 						fn();

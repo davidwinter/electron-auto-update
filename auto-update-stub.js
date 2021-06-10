@@ -19,7 +19,7 @@ class AutoUpdateStub extends EventEmitter {
 		}
 	}
 
-	checkForUpdatesAndNotify() {
+	checkForUpdates() {
 		if (this.downloadAvailable) {
 			this.emit('update-downloaded');
 		} else {

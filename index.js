@@ -44,11 +44,11 @@ class ElectronAutoUpdate {
 			this.logger.info(`Will check again in ${this.checkFrequency} milliseconds`);
 
 			setTimeout(() => {
-				this.autoUpdater.checkForUpdatesAndNotify();
+				this.autoUpdater.checkForUpdates();
 			}, this.checkFrequency);
 		});
 
-		this.autoUpdater.checkForUpdatesAndNotify();
+		this.autoUpdater.checkForUpdates();
 	}
 
 	async updateDownloaded() {
@@ -68,7 +68,7 @@ class ElectronAutoUpdate {
 			this.logger.info('Will remind later to install update');
 
 			setTimeout(() => {
-				this.autoUpdater.checkForUpdatesAndNotify();
+				this.autoUpdater.checkForUpdates();
 			}, this.checkFrequency);
 		}
 	}
