@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "ava": "^3.13.0",
-    "electron": "^10.1.5",
+    "electron": "^13.1.9",
     "sinon": "^9.2.0",
     "xo": "^0.34.1"
   }
