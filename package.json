@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/davidwinter/electron-auto-update#readme",
   "dependencies": {
-    "electron-updater": "^4.3.5"
+    "electron-updater": "^5.2.1"
   },
   "devDependencies": {
     "ava": "^3.13.0",
